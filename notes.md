@@ -104,4 +104,7 @@ iii) RPC
 
 7. What are tools like postman do ? OR what tools and extensions to use while building an API ?
 
+Postman - API testing tool
+
 8. API documentation generator : Swagger -> explore this
+
