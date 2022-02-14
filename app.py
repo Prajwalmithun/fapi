@@ -2,9 +2,9 @@
 
 from cgitb import reset
 from email import message
-from os import name
+from os import *
 from urllib import request
-from flask import Flask
+from flask import Flask, render_template, url_for
 from flask_restful import Api, Resource, marshal_with, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy
 from apispec import APISpec
@@ -38,6 +38,15 @@ docs = FlaskApiSpec(app)
 
 # random names generation for video names
 rnames = ''.join(random.choices(string.ascii_lowercase, k=6))
+
+
+# creating home page, this just contains button to the API docs
+@app.route("/")
+@app.route("/home")
+def home():
+    return render_template("index.html")
+
+
 
 
 class VideoModel(db.Model):
@@ -151,7 +160,8 @@ api.add_resource(Video, "/video/<int:video_id>")
 docs.register(Video)
 
 # running the app
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT","5000"))
+    app.run(host='0.0.0.0',port=port,debug=True)
 
 
