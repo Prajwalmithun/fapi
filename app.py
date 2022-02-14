@@ -2,7 +2,7 @@
 
 from cgitb import reset
 from email import message
-from os import *
+import os
 from urllib import request
 from flask import Flask, render_template, url_for
 from flask_restful import Api, Resource, marshal_with, reqparse, abort, fields, marshal_with
